@@ -121,9 +121,9 @@ const VideoUploadButton = ({handler}) => {
     console.log(arrayTimestamps);
 
     return arrayTimestamps.map((item) => (
-      <p key={item.key}>
+      <div key={item.key}>
         <p>{item.key}: {item.value[0]}</ p>
-      </p>
+      </div>
     ));
   };
 
