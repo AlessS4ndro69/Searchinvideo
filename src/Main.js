@@ -1,5 +1,5 @@
 
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 
 import Fotogramas from "./Fotogramas";
 import logo from './logo.svg';
@@ -19,6 +19,12 @@ const url_video = "https://firebasestorage.googleapis.com/v0/b/video-search-1bb5
 
 
 const Main = () => {
+    const [urlVideo , setUrlVideo] = useState("");
+
+    const handlerVideo = (url) => {
+      console.log("recibiendo url", url);
+      setUrlVideo(url);
+    };
 
     useEffect(()=>{
         
@@ -59,13 +65,13 @@ const Main = () => {
           <p>
             Video
           </p>
-          <video width="640" height="360" controls>
-            <source src={url_video} type="video/mp4" />
+          { urlVideo && <video width="640" height="360" controls>
+            <source src={urlVideo} type="video/mp4" />
             Tu navegador no soporta el elemento de video.
-        </video>
-        <VideoUploadButton/>
+          </video>}
+        <VideoUploadButton handler = {handlerVideo}/>
         </header>
-        <Fotogramas/>
+        {/* <Fotogramas/> */}
       </div>
     );
 };

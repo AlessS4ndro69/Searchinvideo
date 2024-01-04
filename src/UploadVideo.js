@@ -8,7 +8,7 @@ import Loader from './LoaderComponent';
 const NAME_BUCKET = "video-search-1bb50.appspot.com";
 const API_DNN = "http://184.73.32.194:5000/process_video";
 
-const VideoUploadButton = () => {
+const VideoUploadButton = ({handler}) => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [urlImagesApi, setUrlImagesApi] = useState([]);
   const [isFinish, setFinish] = useState(false);
@@ -65,6 +65,7 @@ const VideoUploadButton = () => {
         getDownloadURL(ref(storage, path)).then(async(url) => {
           
           console.log('consultado pathurl: ',url);
+          handler(url);
           const docRef = await addDoc(collection(db, "images_url") ,{
             path_url: url
           });
@@ -121,7 +122,7 @@ const VideoUploadButton = () => {
 
     return arrayTimestamps.map((item) => (
       <p key={item.key}>
-        <strong>{item.key}:</strong> 
+        <p>{item.key}: {item.value[0]}</ p>
       </p>
     ));
   };

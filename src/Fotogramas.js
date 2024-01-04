@@ -26,12 +26,12 @@ const videos = [
         <div style={styles.info}>
           <h2>{object_name}</h2>
           {/* <p>{description}</p> */}
-          {times.map((item, index) => (
+          {/* {times.map((item, index) => (
             <div >
                 <img key={index} src={item.thumbnails} style={styles.thumbnail} />
                 <p>{item.time}</p>
             </div>
-          ))}
+          ))} */}
         </div>
         
         
